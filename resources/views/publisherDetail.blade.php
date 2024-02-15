@@ -11,11 +11,10 @@
 
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">{{$buku->bookTitle}}</h5>
-          <h5 class="card-title">{{$buku->publisher->publisherName}}</h5>
-          <h5 class="card-title">{{$buku->author}}</h5>
-          <h5 class="card-title">{{$buku->price}}</h5>
-          <h5 class="card-title">{{$buku->releaseDate}}</h5>
+          <h5 class="card-title">{{$penerbit->publisherName}}</h5>
+          @foreach ($penerbit->books as $buku)
+          <p class="card-title"> {{$buku->bookTitle}} </p>
+          @endforeach
         </div>
     </div>
 

@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Publisher;
 
 class BookController extends Controller
 {
     //
-    public function AddBook() {
-        return view('addBook');
+    public function AddBook(){
+        $publishers = Publisher::all();
+
+        return view('addBook')->with('penerbit_penerbit', $publishers);
     }
+    
 
     public function StoreBook(Request $request) {
 
         Book::create([
             'bookTitle' => $request->judulBuku,
+            'publisherId' => $request->namaPenerbit,
             'author' => $request->author,
             'price' => $request->harga,
             'releaseDate' => $request->tanggalRilis,
