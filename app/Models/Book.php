@@ -21,4 +21,8 @@ class Book extends Model
         return $this->belongsTo(Publisher::class, 'publisherId');
     }
 
+    public function warehouseList(){
+        return $this->belongsToMany(Warehouse::class, 'book_warehouses', 'book_id', 'warehouse_id');
+    }
+
 }
