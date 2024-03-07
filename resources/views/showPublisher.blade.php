@@ -11,6 +11,7 @@
 
     @foreach ($penerbit_penerbit as $penerbit)
     <div class="card" style="width: 18rem;">
+        <img src="{{asset('/storage/images/'.$penerbit->image)}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{$penerbit->publisherName}}</h5>
           <a href="/publisher/{{$penerbit->id}}" class="btn btn-primary">See More Detail</a>

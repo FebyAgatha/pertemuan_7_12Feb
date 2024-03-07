@@ -11,6 +11,8 @@ class Publisher extends Model
 
     protected $fillable = [
         'publisherName',
+        'image',
+        'email',
     ];
 
     public function books(){

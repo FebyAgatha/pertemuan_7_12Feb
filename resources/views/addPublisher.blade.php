@@ -9,11 +9,30 @@
 </head>
 <body>
     <h1> Add Publisher </h1>
-    <form method="POST" action="/store/publisher">
+    <form method="POST" action="/store/publisher" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="publisher-name" class="form-label">Publisher Name</label>
-          <input type="text" class="form-control" id="publisher-name" name="namaPenerbit">
+            <label for="publisher-name" class="form-label">Publisher Name</label>
+            <input type="text" class="form-control" id="publisher-name" name="namaPublisher">
+            @error('namaPublisher')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="publisher-image" class="form-label">Publisher image</label>
+            <input type="file" class="form-control" id="publisher-image" name="image">
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="publisher-email" class="form-label">Publisher email</label>
+            <input type="text" class="form-control" id="publisher-email" name="email">
+            @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
