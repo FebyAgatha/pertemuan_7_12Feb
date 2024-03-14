@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PublisherController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\WarehouseController;
 |
 */
 
-Route::get('/', [BookController::class, 'ViewAllBook']);
+Route::get('/', [BookController::class, 'ViewAllBook'])->middleware('guest');
 
 Route::get('/add/book', [BookController::class, 'AddBook']);
 
@@ -30,7 +31,7 @@ Route::patch('/save/update/{id}', [BookController::class, 'saveUpdate']);
 
 Route::delete('/delete/book/{id}', [BookController::class, 'deleteBook']);
 
-Route::get('/add/publisher', [PublisherController::class, 'viewAddPublisher']);
+Route::get('/add/publisher', [PublisherController::class, 'viewAddPublisher'])->middleware('auth');
 
 Route::post('/store/publisher', [PublisherController::class, 'storePublisher']);
 
@@ -49,3 +50,13 @@ Route::get('/book/warehouse/{id}', [WarehouseController::class, 'viewBookToWh'])
 Route::post('/store/warehouse/{id}', [WarehouseController::class, 'storeBookToWh']);
 
 Route::get('/detail/warehouse', [WarehouseController::class, 'detail']);
+
+Route::get('/register', [AuthController::class, 'viewRegister']);
+
+Route::post('/register/user', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::post('/login/user', [AuthController::class, 'authenticate']);
+
+Route::post('/logout', [AuthController::class, 'logout']);

@@ -27,6 +27,17 @@
               </li>
             </ul>
           </div>
+          <div class="d-flex">
+            @auth
+              <form class="form-inline my-e my-lg-0" method="POST" action="/logout">
+                @csrf
+                <button class="btn btn-outline-danger" type="submit">Logout</button>
+              </form>
+            @else 
+              <a href="/login" class="btn btn-outline-success" type="submit">Login</a>
+            @endauth
+            
+          </div>
         </div>
       </nav>
 

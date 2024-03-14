@@ -10,6 +10,8 @@ class BookController extends Controller
 {
     //
     public function AddBook(){
+        $this->authorize('is_admin');
+
         $publishers = Publisher::all();
 
         return view('addBook')->with('penerbit_penerbit', $publishers);
@@ -29,6 +31,7 @@ class BookController extends Controller
     }
 
     public function ViewAllBook() {
+
         $books = Book::all();
 
         return view('welcome')->with('buku_buku', $books);
